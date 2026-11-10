@@ -17,6 +17,6 @@ for p in PAGES:
  for url in parser.links:
   if url.startswith(("http","mailto:","tel:","#")):continue
   assert (ROOT/url.split("#")[0]).exists(),(p,url)
-assert not (ROOT/"CNAME").exists()
+assert (ROOT/"CNAME").read_text(encoding="utf-8").strip() == "showplannerspain.es"
 assert "Disallow: /" in (ROOT/"robots.txt").read_text()
 print("Show Planner Spain: 5 páginas validadas. Sin conexiones privadas ni indexación.")
